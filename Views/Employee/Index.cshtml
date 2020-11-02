@@ -1,0 +1,94 @@
+﻿@model RegistrationPage.Models.Registration
+
+@{
+    ViewBag.Title = "User Registration";
+}
+@using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+{
+<div class="jumbotron">
+    <div>
+        <h2>Registration Page:</h2>
+    </div>
+    <hr />
+    <br />
+
+
+    <table>
+        <tr>
+            <td>
+                @Html.Label("Name")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Name)
+
+            </td>
+            <td> &nbsp; &nbsp; @Html.ValidationMessageFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Age")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Age)
+            </td>
+            <td>
+                &nbsp; &nbsp;  @Html.ValidationMessageFor(model => model.Age)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Phone Number")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PhoneNumber)
+            </td>
+
+            <td>
+                &nbsp; &nbsp;  @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Email ID")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.EmailID)
+            </td>
+            <td>
+                &nbsp; &nbsp;   @Html.ValidationMessageFor(model => model.EmailID)
+            </td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-success">Save</button>
+    @*<input type="submit" value="Save" />*@
+    <br />
+
+    <br />
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Phone NumberEmail ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in TempData["ie"] as IEnumerable<RegistrationPage.Models.Registration>)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.EmailID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    }
+
